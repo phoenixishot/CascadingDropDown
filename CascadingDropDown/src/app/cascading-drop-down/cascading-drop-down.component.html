@@ -1,0 +1,21 @@
+<form [formGroup]="myForm" (ngSubmit)="myForm">
+
+  <fieldset>
+    <legend> Category and SubCategory *</legend>
+    <label>Country:</label>
+    <select formControlName="Category" (change)="onSelect($event.target.value)">
+      <option selected disabled>--Select--</option>
+      <option *ngFor="let cat of Categories" value={{cat.id}}>{{cat.name}}</option>
+    </select>
+    <br /><br />
+    <div>
+      <label>State:</label>
+      <select formControlName="SubCategory">
+        <option selected disabled>--Select--</option>
+        <option *ngFor="let subC of SubCategories " value={{subC.id}}>{{subC.name}}</option>
+      </select>
+    </div>
+
+  </fieldset>
+  <button type="submit" (click)="onSubmit(myForm.value)">submit</button>
+</form>
